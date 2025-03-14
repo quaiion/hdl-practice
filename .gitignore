@@ -1,2 +1,3 @@
 **/artifacts/**
 !**/.gitkeep
+**/obj_dir/
