@@ -20,8 +20,8 @@ module VCB4RE_tb ;
                 .ce (1),
                 .r (0),
                 .tc (tc),
-                .ceo (ceo)
-                .q (q),
+                .ceo (ceo),
+                .q (q)
         );
 
 endmodule
