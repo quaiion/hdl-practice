@@ -9,7 +9,7 @@ module VCBD4SE_tb ;
         end
 
         reg clk = 0 ;
-        always #1 clk = !clk ;
+        always #1 clk <= !clk ;
 
         reg [3:0]q ;
         wire tc ;

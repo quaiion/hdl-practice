@@ -9,7 +9,7 @@ module VCD4RE_tb ;
         end
 
         reg clk = 0 ;
-        always #1 clk = !clk ;
+        always #1 clk <= !clk ;
 
         reg [3:0] q[0:3] ;
         wire tc ;
