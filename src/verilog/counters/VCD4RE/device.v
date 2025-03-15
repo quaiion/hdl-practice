@@ -5,9 +5,8 @@ module VCDRE ( input clk, output wire tc,
         assign tc = (q == 9) ;
         assign ceo = ce & tc ;
 
-        always @ (posedge clk) begin
+        always @ (posedge clk)
                 q <= (r | ceo) ? 0 : ce ? q + 1 : q ;
-        end
 
 endmodule
 

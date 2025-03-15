@@ -5,8 +5,7 @@ module VCB4RE ( input clk, output wire tc,
         assign tc = (q == 15) ;
         assign ceo = ce & tc ;
 
-        always @ (posedge clk) begin
+        always @ (posedge clk)
                 q <= r ? 0 : ce ? (q + 1) : q ;
-        end
 
 endmodule
