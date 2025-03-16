@@ -1,4 +1,4 @@
-module Dig_Act ( input clk, output reg [1:0]q = 0,
+module 7Seg_Dig_Act ( input clk, output reg [1:0]q = 0,
                       input ce,  output wire [3:0]act );
 
         assign act = (q == 0) ? 4'b0001 :

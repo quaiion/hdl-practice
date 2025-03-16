@@ -1,4 +1,4 @@
-module Gen1ms ( input clk, output wire ce_1ms = 0 );
+module Gen_1ms ( input clk, output wire ce_1ms = 0 );
 
         parameter clk_freq = 50000000 ;
 
