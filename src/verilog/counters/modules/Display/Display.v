@@ -5,31 +5,31 @@ module Display ( input clk,       output wire [3:0]act,
         wire [3:0]dig_val ;
         wire [1:0]dig ;
 
-        7Seg_Dig_Act DD1 (
+        7Seg_Dig_Act dig_act (
                 .clk (clk),
                 .ce (ce_1ms),
                 .q (dig),
                 .act (act)
         );
 
-        Mux_16_4 DD2 (
+        Mux_16_4 mux (
                 .dat (dat),
                 .do (dig_val),
                 .adr (dig)
         );
 
-        7Seg_Translate DD3 (
+        7Seg_Translate transl (
                 .dig (dig_val),
                 .seg (seg[6:0])
         );
 
-        7Seg_Pt_Act DD4 (
+        7Seg_Pt_Act pt_act (
                 .pt (pt),
                 .dig (dig),
                 .act_pt (seg[7])
         );
 
-        Gen_1ms DD5 (
+        Gen_1ms gen (
                 .clk (clk),
                 .ce_1ms (ce_1ms)
         );
