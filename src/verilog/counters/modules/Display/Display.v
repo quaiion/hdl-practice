@@ -16,12 +16,12 @@ module Display ( input clk,       output wire [3:0]act,
 
         Mux_16_4 mux (
                 .dat (dat),
-                .do (dig_val),
-                .adr (dig)
+                .dig (dig),
+                .dig_val (dig_val)
         );
 
         SSeg_Translate transl (
-                .dig (dig_val),
+                .dig_val (dig_val),
                 .seg (seg[6:0])
         );
 

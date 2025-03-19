@@ -27,7 +27,7 @@ module Device ( input clk,     output wire [3:0]act,
                 .ceo (init_ce)
         );
 
-        VCB4CLED counter_0 (
+        VCBmCLED counter_0 (
                 .clk (clk),
                 .ce (init_ce),
                 .clr (btn_0),
@@ -48,7 +48,7 @@ module Device ( input clk,     output wire [3:0]act,
                 .q (dat[7:4])
         );
 
-        VCBD4SE counter_2 (
+        VCBDmSE counter_2 (
                 .clk (clk),
                 .ce (inter_ce_12),
                 .s (btn_0),
