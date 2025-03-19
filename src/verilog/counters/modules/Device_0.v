@@ -3,13 +3,15 @@ module Device ( input clk,     output wire [3:0]act,
                 input btn_0,
                 input btn_1 );
 
-        wire [15:0]dat ;
+        reg [15:0]dat ;
         wire ce_1ms, init_ce, tc, ceo ;
         wire inter_ce_01,
              inter_ce_12,
              inter_ce_23 ;
 
-        Display disp (
+        Display #(
+                .CLK_FREQ (27_000_000)
+        ) disp (
                 .clk (clk),
                 .dat (dat),
                 .pt (sw[5:4]),
