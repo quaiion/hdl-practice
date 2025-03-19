@@ -8,6 +8,6 @@ module VCBDmSE ( input clk, output wire tc,
         assign ceo = ce & tc ;
 
         always @ (posedge clk)
-                q <= s ? ((1 << `m) - 1) : ce ? q - 1 : q ;
+                q <= (s | tc) ? ((1 << `m) - 1) : ce ? q - 1 : q ;
 
 endmodule

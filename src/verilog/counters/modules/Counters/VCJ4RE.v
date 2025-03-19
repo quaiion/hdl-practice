@@ -8,6 +8,6 @@ module VCJmRE ( input clk, output wire tc,
         assign ceo = ce & tc ;
 
         always @ (posedge clk)
-                q <= r ? 0 : ce ? (q << 1) | {3'b000, !q[`m - 1]} : q ;
+                q <= (r | ceo) ? 0 : ce ? (q << 1) | {3'b000, !q[`m - 1]} : q ;
 
 endmodule
