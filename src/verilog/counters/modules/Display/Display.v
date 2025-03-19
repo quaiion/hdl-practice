@@ -7,7 +7,7 @@ module Display ( input clk,       output wire [3:0]act,
         wire [3:0]dig_val ;
         wire [1:0]dig ;
 
-        7Seg_Dig_Act dig_act (
+        SSeg_Dig_Act dig_act (
                 .clk (clk),
                 .ce (ce_1ms),
                 .q (dig),
@@ -20,12 +20,12 @@ module Display ( input clk,       output wire [3:0]act,
                 .adr (dig)
         );
 
-        7Seg_Translate transl (
+        SSeg_Translate transl (
                 .dig (dig_val),
                 .seg (seg[6:0])
         );
 
-        7Seg_Pt_Act pt_act (
+        SSeg_Pt_Act pt_act (
                 .pt (pt),
                 .dig (dig),
                 .act_pt (seg[7])

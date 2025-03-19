@@ -1,4 +1,4 @@
-module 7Seg_Translate ( input [3:0]dig_val, output wire [6:0]seg );
+module SSeg_Translate ( input [3:0]dig_val, output wire [6:0]seg );
 
         //      a
         //  f | ‾ | b
