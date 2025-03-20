@@ -11,7 +11,7 @@ module VCBmCLED( input clk,           output wire tc,
         assign ceo = ce & tc ;
 
         always @ (posedge clr or posedge clk) begin
-                if (clr | ceo) q <= 0 ;
+                if (clr) q <= 0 ;
                 else q <= l ? di : (up & ce) ? q + 1 : (!up & ce) ? (q - 1) : q ;
         end
 
