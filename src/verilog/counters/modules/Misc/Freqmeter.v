@@ -1,56 +1,56 @@
 module VC4D4RE ( input clk, output wire tc,
                  input ce,  output wire ceo,
-                 input r,   output reg [3:0]q0 = 0,
-                            output reg [3:0]q1 = 0,
-                            output reg [3:0]q2 = 0,
-                            output reg [3:0]q3 = 0 );
+                 input r,   output reg [3:0]q0,
+                            output reg [3:0]q1,
+                            output reg [3:0]q2,
+                            output reg [3:0]q3 );
 
-        wire tc0, tc1, tc2, tc3 ;
-        assign tc = tc0 & tc1 & tc2 & tc3 ;
+        wire tc_0, tc_1, tc_2, tc_3 ;
+        assign tc = tc_0 & tc_1 & tc_2 & tc_3 ;
 
         wire inter_ce_01,
              inter_ce_12,
              inter_ce_23 ;
 
-        VCDRE dec_ctr_0 (
+        VCD4RE dec_ctr_0 (
                 .clk (clk),
                 .ce (ce),
                 .r (r),
-                .tc (tc0),
+                .tc (tc_0),
                 .ceo (inter_ce_01),
                 .q (q0)
         );
 
-        VCDRE dec_ctr_1 (
+        VCD4RE dec_ctr_1 (
                 .clk (clk),
                 .ce (inter_ce_01),
                 .r (r),
-                .tc (tc1),
+                .tc (tc_1),
                 .ceo (inter_ce_12),
                 .q (q1)
         );
 
-        VCDRE dec_ctr_2 (
+        VCD4RE dec_ctr_2 (
                 .clk (clk),
                 .ce (inter_ce_12),
                 .r (r),
-                .tc (tc2),
+                .tc (tc_2),
                 .ceo (inter_ce_23),
                 .q (q2)
         );
 
-        VCDRE dec_ctr_3 (
+        VCD4RE dec_ctr_3 (
                 .clk (clk),
                 .ce (inter_ce_23),
                 .r (r),
-                .tc (tc3),
+                .tc (tc_3),
                 .ceo (ceo),
                 .q (q3)
         );
 
 endmodule
 
-module Freqmeter ( input clk, output reg [15:0]dat,
+module Freqmeter ( input clk,    output reg [15:0]dat,
                    input ce_1ms,
                    input ce );
 
@@ -60,7 +60,7 @@ module Freqmeter ( input clk, output reg [15:0]dat,
         VC4D4RE counter (
                 .clk (clk),
                 .ce (ce_1ms),
-                .r (0),
+                .r (ce),
                 .tc (tc),
                 .ceo (ceo),
                 .q0 (q[15:12]),
@@ -69,6 +69,8 @@ module Freqmeter ( input clk, output reg [15:0]dat,
                 .q3 (q[3:0])
         );
 
-        always @ (posedge clk) if (ce) dat <= q ;
+        always @ (posedge clk) begin
+                if (ce) dat <= q ;
+        end
 
 endmodule

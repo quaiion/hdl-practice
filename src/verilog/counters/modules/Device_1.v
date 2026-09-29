@@ -11,7 +11,7 @@ module Device ( input clk,     output wire [3:0]act,
         Debouncer deb (
                 .clk (clk),
                 .ce (ce_1ms),
-                .btn_in (btn_2),
+                .btn_in (~btn_2),
                 .btn_out (btn_2_deb)
         );
 
@@ -20,7 +20,7 @@ module Device ( input clk,     output wire [3:0]act,
         ) disp (
                 .clk (clk),
                 .dat (dat),
-                .pt (sw[5:4]),
+                .pt (~sw[5:4]),
                 .act (act),
                 .seg (seg),
                 .ce_1ms (ce_1ms)
@@ -29,10 +29,10 @@ module Device ( input clk,     output wire [3:0]act,
         VCBmCLED counter_0 (
                 .clk (clk),
                 .ce (btn_2_deb),
-                .clr (btn_0),
-                .up (sw[6]),
-                .l (btn_1),
-                .di (sw[3:0]),
+                .clr (~btn_0),
+                .up (~sw[6]),
+                .l (~btn_0),
+                .di (~sw[3:0]),
                 .tc (tc),
                 .ceo (ceo),
                 .q (dat[3:0])
@@ -41,7 +41,7 @@ module Device ( input clk,     output wire [3:0]act,
         VCB4RE counter_1 (
                 .clk (clk),
                 .ce (btn_2_deb),
-                .r (btn_0),
+                .r (~btn_0),
                 .tc (tc),
                 .ceo (ceo),
                 .q (dat[7:4])
@@ -50,7 +50,7 @@ module Device ( input clk,     output wire [3:0]act,
         VCBDmSE counter_2 (
                 .clk (clk),
                 .ce (btn_2_deb),
-                .s (btn_0),
+                .s (~btn_0),
                 .tc (tc),
                 .ceo (ceo),
                 .q (dat[11:8])
@@ -59,7 +59,7 @@ module Device ( input clk,     output wire [3:0]act,
         VCD4RE counter_3 (
                 .clk (clk),
                 .ce (btn_2_deb),
-                .r (btn_0),
+                .r (~btn_0),
                 .tc (tc),
                 .ceo (ceo),
                 .q (dat[15:12])

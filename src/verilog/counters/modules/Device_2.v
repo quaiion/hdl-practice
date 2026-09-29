@@ -16,7 +16,7 @@ module Device ( input clk,     output wire [3:0]act,
         ) disp (
                 .clk (clk),
                 .dat (dat),
-                .pt (sw[5:4]),
+                .pt (~sw[5:4]),
                 .act (act),
                 .seg (seg),
                 .ce_1ms (ce_1ms)
@@ -25,7 +25,7 @@ module Device ( input clk,     output wire [3:0]act,
         Gen_Nms_1s gen (
                 .clk (clk),
                 .ce (ce_1ms),
-                .tmod (sw[7]),
+                .tmod (~sw[7]),
                 .ceo (imp_ce)
         );
 

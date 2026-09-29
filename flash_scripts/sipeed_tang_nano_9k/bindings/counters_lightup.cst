@@ -12,16 +12,4 @@ IO_LOC "act[2]" 41;
 IO_LOC "act[1]" 35;
 IO_LOC "act[0]" 40;
 
-IO_LOC "btn_0" 76;
-IO_LOC "btn_1" 73;
-
-IO_LOC "sw[7]" 28;
-IO_LOC "sw[6]" 27;
-IO_LOC "sw[5]" 26;
-IO_LOC "sw[4]" 25;
-IO_LOC "sw[3]" 39;
-IO_LOC "sw[2]" 36;
-IO_LOC "sw[1]" 37;
-IO_LOC "sw[0]" 38;
-
 IO_LOC "clk" 52 ;

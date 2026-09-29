@@ -4,7 +4,8 @@ module Device ( input clk,     output wire [3:0]act,
                 input btn_1 );
 
         reg [15:0]dat ;
-        wire ce_1ms, init_ce, tc, ceo ;
+        wire ce_1ms, init_ce, ceo ;
+        wire tc_0, tc_1, tc_2, tc_3 ;
         wire inter_ce_01,
              inter_ce_12,
              inter_ce_23 ;
@@ -14,7 +15,7 @@ module Device ( input clk,     output wire [3:0]act,
         ) disp (
                 .clk (clk),
                 .dat (dat),
-                .pt (sw[5:4]),
+                .pt (~sw[5:4]),
                 .act (act),
                 .seg (seg),
                 .ce_1ms (ce_1ms)
@@ -23,47 +24,47 @@ module Device ( input clk,     output wire [3:0]act,
         Gen_Nms_1s gen (
                 .clk (clk),
                 .ce (ce_1ms),
-                .tmod (sw[7]),
+                .tmod (~sw[7]),
                 .ceo (init_ce)
         );
 
         VCBmCLED counter_0 (
                 .clk (clk),
                 .ce (init_ce),
-                .clr (btn_0),
-                .up (sw[6]),
-                .l (btn_1),
-                .di (sw[3:0]),
-                .tc (tc),
+                .clr (~btn_0),
+                .up (~sw[6]),
+                .l (~btn_1),
+                .di (~sw[3:0]),
+                .tc (tc_0),
                 .ceo (inter_ce_01),
-                .q (dat[3:0])
+                .q (dat[15:12])
         );
 
         VCB4RE counter_1 (
                 .clk (clk),
                 .ce (inter_ce_01),
-                .r (btn_0),
-                .tc (tc),
+                .r (~btn_0),
+                .tc (tc_1),
                 .ceo (inter_ce_12),
-                .q (dat[7:4])
+                .q (dat[11:8])
         );
 
         VCBDmSE counter_2 (
                 .clk (clk),
                 .ce (inter_ce_12),
-                .s (btn_0),
-                .tc (tc),
+                .s (~btn_0),
+                .tc (tc_2),
                 .ceo (inter_ce_23),
-                .q (dat[11:8])
+                .q (dat[7:4])
         );
 
         VCD4RE counter_3 (
                 .clk (clk),
                 .ce (inter_ce_23),
-                .r (btn_0),
-                .tc (tc),
+                .r (~btn_0),
+                .tc (tc_3),
                 .ceo (ceo),
-                .q (dat[15:12])
+                .q (dat[3:0])
         );
 
 endmodule
