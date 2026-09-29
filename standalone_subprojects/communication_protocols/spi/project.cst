@@ -1,0 +1,42 @@
+IO_LOC "segments[0]" 69;
+IO_LOC "segments[1]" 68;
+IO_LOC "segments[2]" 57;
+IO_LOC "segments[3]" 56;
+IO_LOC "segments[4]" 55;
+IO_LOC "segments[5]" 54;
+IO_LOC "segments[6]" 53;
+IO_LOC "segments[7]" 51;
+
+IO_LOC "digits[3]" 42;
+IO_LOC "digits[2]" 41;
+IO_LOC "digits[1]" 35;
+IO_LOC "digits[0]" 40;
+
+IO_LOC "switch[9]" 30;
+IO_LOC "switch[8]" 29;
+IO_LOC "switch[7]" 28;
+IO_LOC "switch[6]" 27;
+IO_LOC "switch[5]" 26;
+IO_LOC "switch[4]" 25;
+IO_LOC "switch[3]" 39;
+IO_LOC "switch[2]" 36;
+IO_LOC "switch[1]" 37;
+IO_LOC "switch[0]" 38;
+
+IO_LOC "led[7]" 77;
+IO_LOC "led[6]" 76;
+IO_LOC "led[5]" 75;
+IO_LOC "led[4]" 74;
+IO_LOC "led[3]" 73;
+IO_LOC "led[2]" 72;
+IO_LOC "led[1]" 71;
+IO_LOC "led[0]" 70;
+
+IO_LOC "clk" 52;
+IO_LOC "btn0" 4;
+IO_LOC "btn1" 3;
+
+IO_LOC "sclk" 85;
+IO_LOC "miso" 84;
+IO_LOC "mosi" 83;
+IO_LOC "load" 82;
